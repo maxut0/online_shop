@@ -1,20 +1,21 @@
-const ApiError = require('../error/ApiError');
+const ApiError = require("../error/ApiError")
+
 class UserController {
-    async registration(req, res) {
+  async registration(req, res) {
 
+  }
+
+  async login(req, res) {
+
+  }
+
+  async check(req, res, next) {
+    const {id} = req.query
+    if (!id) {
+      return next(ApiError.badRequest('No ID specified'))
     }
+    res.json(id);
+  }
+}
 
-    async login(req, res) {
-
-    }
-
-    async check(req, res, next) {
-        const {id} = req.query
-        if(!id) {
-            return next(ApiError.badRequest('Ne zadan ID'))
-        }
-        res.json(id);
-    }
- } 
-
- module.exports = new UserController()
+module.exports = new UserController()
